@@ -1,11 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
+    previewFeatures = ["omitApi"]
 }
 
 datasource db {
@@ -18,17 +13,17 @@ model User {
   username      String       @unique
   password      String
   email         String       @unique
-  nickname      String?
-  phonenumber  String?
+  nickname      String
+  phoneNumber   String
   profile       String?
-  createdAt    DateTime     @default(now())  @map("created_at")
-  updatedAt    DateTime     @updatedAt @map("updated_at")
+  createdAt     DateTime     @default(now())  @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
   posts         Post[]
   comments      Comment[]
   bookmarks     Bookmark[]
-  refreshTokens RefreshToken[]
+  refreshToken RefreshToken?
 
-  @@map("users")
+  @@map("user")
 }
 
 model Post {
@@ -74,12 +69,12 @@ model Bookmark {
 
 model RefreshToken {
   id           Int      @id @default(autoincrement())
-  userId       Int      @map("user_id")
+  userId       Int      @unique @map("user_id")
   refreshToken String   @map("refresh_token")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-  user         User     @relation(fields: [userId], references: [id])
-
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  user         User     @relation(fields: [userId],references: [id])
+  
   @@map("refresh_tokens")
 }
 
