@@ -55,5 +55,9 @@ export const MESSAGES = {
         READ_ME: {
             SUCCEED: '내 정보 조회에 성공했습니다.',
         },
+        UPDATE_ME: {
+            SUCCEED: '내 정보 수정에 성공했습니다.',
+            NO_BODY_DATA: '수정할 데이터를 입력해주세요',
+        },
     },
 };
