@@ -1,10 +1,11 @@
-import { MIN_PASSWORD_LENGTH } from './auth.constant.js';
+import { MIN_PASSWORD_LENGTH, MIN_ID_LENGTH } from './auth.constant.js';
 
 export const MESSAGES = {
     AUTH: {
         COMMON: {
             USERNAME: {
                 REQUIRED: 'ID를 입력해 주세요.',
+                MIN_LENGTH: `ID는 ${MIN_ID_LENGTH}자리 이상이어야 합니다.`,
             },
             EMAIL: {
                 REQUIRED: '이메일을 입력해 주세요.',
@@ -42,6 +43,9 @@ export const MESSAGES = {
         },
         SIGN_IN: {
             SECCEED: '로그인에 성공했습니다.',
+        },
+        SIGN_OUT: {
+            SECCEED: '로그아웃에 성공했습니다.',
         },
         TOKEN: {
             SECCEED: '토큰 재발급에 성공했습니다.',
