@@ -5,13 +5,12 @@ import {
     updateComment,
     deleteComment,
 } from '../controllers/commentController.js';
-import { verifyToken } from '../middlewares/authMiddleware.js';
 
-const router = Router();  
+const router = Router();
 
-router.post('/comments', verifyToken, createComment);
-router.get('/comments/:postId', getCommentsByPost);
-router.patch('/comments/:commentId', verifyToken, updateComment);
-router.delete('/comments/:commentId', verifyToken, deleteComment);
+router.post('/', createComment);
+router.get('/:postId', getCommentsByPost);
+router.patch('/:commentId', updateComment);
+router.delete('/:commentId', deleteComment);
 
 export default router;

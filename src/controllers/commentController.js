@@ -1,5 +1,5 @@
 // src/controllers/commentController.js
-import prisma from '../prisma.util.js';
+import { prisma } from '../utils/prisma.util.js';
 
 // 댓글 작성
 export const createComment = async (req, res) => {
@@ -38,7 +38,7 @@ export const getCommentsByPost = async (req, res) => {
 // 댓글 수정
 export const updateComment = async (req, res) => {
     const { commentId } = req.params;
-    const { content } = req.body;  
+    const { content } = req.body;
     const userId = req.user.id; // 인증된 사용자 ID
 
     try {
@@ -48,7 +48,9 @@ export const updateComment = async (req, res) => {
         });
 
         if (comment.count === 0) {
-            return res.status(404).json({ message: '댓글을 찾을 수 없거나 권한이 없습니다.' });
+            return res
+                .status(404)
+                .json({ message: '댓글을 찾을 수 없거나 권한이 없습니다.' });
         }
 
         res.status(200).json({ message: '댓글이 수정되었습니다.' });
@@ -68,7 +70,9 @@ export const deleteComment = async (req, res) => {
         });
 
         if (comment.count === 0) {
-            return res.status(404).json({ message: '댓글을 찾을 수 없거나 권한이 없습니다.' });
+            return res
+                .status(404)
+                .json({ message: '댓글을 찾을 수 없거나 권한이 없습니다.' });
         }
 
         res.status(200).json({ message: '댓글이 삭제되었습니다.' });

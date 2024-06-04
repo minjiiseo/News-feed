@@ -4,7 +4,7 @@ import { HTTP_STATUS } from '../constants/http-status.constant.js';
 import { MESSAGES } from '../constants/message.constant.js';
 import { createPostsValidator } from '../middlewares/validators/create-posts-validator.js';
 import { prisma } from '../utils/prisma.util.js';
-import { updatePostsValidator } from '../middlewares/validators/update-posts-validator copy.js';
+import { updatePostsValidator } from '../middlewares/validators/update-posts-validator.js';
 
 const postsRouter = express.Router();
 
