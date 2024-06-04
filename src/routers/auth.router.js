@@ -121,13 +121,11 @@ router.post('/sign-out', requireRefreshToken, async (req, res, next) => {
             },
         });
 
-        return res
-            .status(HTTP_STATUS.OK)
-            .json(
-                createResponse(HTTP_STATUS.OK, MESSAGES.AUTH.SIGN_OUT.SECCEED, {
-                    id: user.id,
-                })
-            );
+        return res.status(HTTP_STATUS.OK).json(
+            createResponse(HTTP_STATUS.OK, MESSAGES.AUTH.SIGN_OUT.SECCEED, {
+                id: user.id,
+            })
+        );
     } catch (err) {
         next(err);
     }

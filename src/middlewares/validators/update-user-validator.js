@@ -6,7 +6,7 @@ const schema = Joi.object({
         'string.email': MESSAGES.AUTH.COMMON.EMAIL.INVALID_FORMAT,
     }),
     nickname: Joi.string(),
-    phoneNumber: Joi.string(),
+    phone_number: Joi.string(),
     profile: Joi.string(),
 })
     .min(1)

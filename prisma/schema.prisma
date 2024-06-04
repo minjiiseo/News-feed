@@ -14,7 +14,7 @@ model User {
   password      String
   email         String       @unique
   nickname      String
-  phoneNumber   String
+  phoneNumber   String       @map("phone_number")
   profile       String?
   createdAt     DateTime     @default(now())  @map("created_at")
   updatedAt     DateTime     @updatedAt @map("updated_at")
@@ -33,8 +33,8 @@ model Post {
   price           Int?
   content         String
   image           String?
-  status          PostStatus
-  transactionType TransactionType  @map("transaction_type")
+  status          PostStatus@default(FOR_SALE)
+  transactionType TransactionType   @map("transaction_type")
   createdAt      DateTime   @default(now()) @map("created_at")
   updatedAt      DateTime   @updatedAt @map("updated_at")
   user            User       @relation(fields: [userId], references: [id])

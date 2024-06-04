@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `posts` MODIFY `status` ENUM('FOR_SALE', 'RESERVED', 'SOLD_OUT') NOT NULL DEFAULT 'FOR_SALE';
