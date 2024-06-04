@@ -60,4 +60,32 @@ export const MESSAGES = {
             NO_BODY_DATA: '수정할 데이터를 입력해주세요',
         },
     },
+    POSTS: {
+        COMMON: {
+            TITLE: {
+                REQUIRED: '제목을 입력해 주세요',
+            },
+            CONTENT: {
+                REQUIRED: '내용을 입력해 주세요',
+                MIN_LENGTH: '내용은 5자 이상 입력해주세요.',
+            },
+            NOT_FOUND: '게시물이 존재하지 않습니다.',
+        },
+        CREATE: {
+            SUCCEED: '게시물 생성에 성공했습니다.',
+        },
+        READ_LIST: {
+            SUCCEED: '게시물 목록 조회에 성공했습니다.',
+        },
+        READ_DETAIL: {
+            SUCCEED: '게시물 상세 조회에 성공했습니다.',
+        },
+        UPDATE: {
+            SUCCEED: '게시물 수정에 성공했습니다.',
+            NO_BODY_DATA: '수정 할 정보를 입력해 주세요.',
+        },
+        DELETE: {
+            SUCCEED: '게시물 삭제에 성공했습니다.',
+        },
+    },
 };
