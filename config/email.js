@@ -6,8 +6,6 @@ import {
 } from '../src/constants/env.constant.js';
 
 export const smtpTransport = nodemailer.createTransport({
-    // pool: true,
-    // maxConnections: 1,
     service: SMTP_SERVICE,
     host: 'smtp.naver.com',
     port: 465,
@@ -16,8 +14,4 @@ export const smtpTransport = nodemailer.createTransport({
         user: SMTP_USER,
         pass: SMTP_PASSWORD,
     },
-    // tls: {
-    //     ciphers: 'SSLv3',
-    //     rejectUnauthorized: false,
-    // },
 });
