@@ -67,6 +67,9 @@ export const MESSAGES = {
             SUCCEED: '내 정보 수정에 성공했습니다.',
             NO_BODY_DATA: '수정할 데이터를 입력해주세요',
         },
+        BOOKMARK: {
+            SUCCEED: '내 관심 게시글 조회에 성공했습니다.',
+        },
     },
     POSTS: {
         COMMON: {
