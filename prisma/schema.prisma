@@ -1,14 +1,89 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
+    previewFeatures = ["omitApi"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int          @id @default(autoincrement())
+  password      String
+  email         String       @unique
+  nickname      String       @unique
+  phoneNumber   String       @map("phone_number")
+  profile       String?
+  createdAt     DateTime     @default(now())  @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+  posts         Post[]
+  comments      Comment[]
+  bookmarks     Bookmark[]
+  refreshToken RefreshToken?
+
+  @@map("user")
+}
+
+model Post {
+  id              Int               @id @default(autoincrement())
+  userId          Int               @map("user_id")
+  title           String
+  price           Int?
+  content         String
+  image           String?
+  status          PostStatus        @default(FOR_SALE)
+  transactionType TransactionType   @default(SELL) @map("transaction_type")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+  user            User              @relation(fields: [userId], references: [id])
+  comments        Comment[]
+  bookmarks       Bookmark[]
+
+  @@map("posts")
+}
+
+model Comment {
+  id         Int      @id @default(autoincrement())
+  postId     Int      @map("post_id")
+  userId     Int      @map("user_id")
+  content    String
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  post       Post     @relation(fields: [postId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@map("comments")
+}
+
+model Bookmark {
+  postId Int
+  userId Int
+  post   Post @relation(fields: [postId], references: [id])
+  user   User @relation(fields: [userId], references: [id])
+  @@id([postId, userId])
+
+  @@map("bookmarks")
+}
+
+model RefreshToken {
+  id           Int       @id @default(autoincrement())
+  userId       Int       @unique @map("user_id")
+  refreshToken String?   @map("refresh_token")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  user         User      @relation(fields: [userId],references: [id])
+  
+  @@map("refresh_tokens")
+}
+
+enum PostStatus {
+  FOR_SALE
+  RESERVED
+  SOLD_OUT
+}
+
+enum TransactionType {
+  SELL
+  SHARE
 }
