@@ -53,4 +53,29 @@ router.patch('/me', updateUserValidator, async (req, res, next) => {
     }
 });
 
+/*
+    내 관심 게시글(북마크) 목록 조회 API
+*/
+router.get('/me/bookmarks', async (req, res, next) => {
+    try {
+        const { id } = req.user;
+
+        const bookmarkList = await prisma.bookmark.findMany({
+            where: { userId: +id },
+        });
+
+        return res
+            .status(HTTP_STATUS.OK)
+            .json(
+                createResponse(
+                    HTTP_STATUS.OK,
+                    MESSAGES.USERS.BOOKMARK.SUCCEED,
+                    bookmarkList
+                )
+            );
+    } catch (err) {
+        next(err);
+    }
+});
+
 export default router;

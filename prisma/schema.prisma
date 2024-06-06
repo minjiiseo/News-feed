@@ -26,17 +26,17 @@ model User {
 }
 
 model Post {
-  id              Int        @id @default(autoincrement())
-  userId          Int        @map("user_id")
+  id              Int               @id @default(autoincrement())
+  userId          Int               @map("user_id")
   title           String
   price           Int?
   content         String
   image           String?
-  status          PostStatus@default(FOR_SALE)
-  transactionType TransactionType   @map("transaction_type")
-  createdAt      DateTime   @default(now()) @map("created_at")
-  updatedAt      DateTime   @updatedAt @map("updated_at")
-  user            User       @relation(fields: [userId], references: [id])
+  status          PostStatus        @default(FOR_SALE)
+  transactionType TransactionType   @default(SELL) @map("transaction_type")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+  user            User              @relation(fields: [userId], references: [id])
   comments        Comment[]
   bookmarks       Bookmark[]
 
@@ -48,8 +48,8 @@ model Comment {
   postId     Int      @map("post_id")
   userId     Int      @map("user_id")
   content    String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
   post       Post     @relation(fields: [postId], references: [id])
   user       User     @relation(fields: [userId], references: [id])
 
@@ -67,12 +67,12 @@ model Bookmark {
 }
 
 model RefreshToken {
-  id           Int      @id @default(autoincrement())
-  userId       Int      @unique @map("user_id")
+  id           Int       @id @default(autoincrement())
+  userId       Int       @unique @map("user_id")
   refreshToken String?   @map("refresh_token")
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
-  user         User     @relation(fields: [userId],references: [id])
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  user         User      @relation(fields: [userId],references: [id])
   
   @@map("refresh_tokens")
 }
