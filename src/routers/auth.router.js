@@ -54,13 +54,15 @@ router.post('/sign-up', signUpValidator, async (req, res, next) => {
             data: formattedData,
         });
 
-        return res.status(HTTP_STATUS.CREATED).json(
-            createResponse(
-                HTTP_STATUS.CREATED,
-                MESSAGES.AUTH.SIGN_UP.SECCEED
-                // data
-            )
-        );
+        return res
+            .status(HTTP_STATUS.CREATED)
+            .json(
+                createResponse(
+                    HTTP_STATUS.CREATED,
+                    MESSAGES.AUTH.SIGN_UP.SECCEED,
+                    data
+                )
+            );
     } catch (err) {
         next(err);
     }
