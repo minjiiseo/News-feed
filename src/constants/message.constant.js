@@ -99,4 +99,15 @@ export const MESSAGES = {
             SUCCEED: '게시물 삭제에 성공했습니다.',
         },
     },
+    BOOKMARK: {
+        READ_COUNT: {
+            SUCCEED: '북마크 개수 조회에 성공했습니다.',
+        },
+        CREATE: {
+            SUCCEED: '북마크 추가를 성공했습니다.',
+        },
+        DELETE: {
+            SUCCEED: '북마크 삭제에 성공했습니다.',
+        },
+    },
 };
