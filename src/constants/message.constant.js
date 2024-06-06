@@ -3,10 +3,6 @@ import { MIN_PASSWORD_LENGTH, MIN_ID_LENGTH } from './auth.constant.js';
 export const MESSAGES = {
     AUTH: {
         COMMON: {
-            USERNAME: {
-                REQUIRED: 'ID를 입력해 주세요.',
-                MIN_LENGTH: `ID는 ${MIN_ID_LENGTH}자리 이상이어야 합니다.`,
-            },
             EMAIL: {
                 REQUIRED: '이메일을 입력해 주세요.',
                 INVALID_FORMAT: '이메일 형식이 올바르지 않습니다.',
@@ -49,6 +45,18 @@ export const MESSAGES = {
         },
         TOKEN: {
             SECCEED: '토큰 재발급에 성공했습니다.',
+        },
+        EMAIL_VERIFICATION: {
+            SUCCESS: '이메일 인증 메세지 전송에 성공했습니다.',
+            FAILURE: '인증 메세지를 전송 할 수 없습니다.',
+        },
+        EMAIL_CHECK: {
+            DUPLICATE: '이미 사용 중인 이메일입니다.',
+            AVAILABLE: '사용 가능한 이메일입니다.',
+        },
+        EMAIL_VERIFICATION_CODE: {
+            SUCCESS: '이메일 인증코드가 확인되었습니다.',
+            FAILURE: '유효하지 않은 인증코드입니다.',
         },
     },
     USERS: {

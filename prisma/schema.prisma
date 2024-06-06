@@ -10,10 +10,9 @@ datasource db {
 
 model User {
   id            Int          @id @default(autoincrement())
-  username      String       @unique
   password      String
   email         String       @unique
-  nickname      String
+  nickname      String       @unique
   phoneNumber   String       @map("phone_number")
   profile       String?
   createdAt     DateTime     @default(now())  @map("created_at")
