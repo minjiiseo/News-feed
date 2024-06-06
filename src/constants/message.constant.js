@@ -99,6 +99,32 @@ export const MESSAGES = {
             SUCCEED: '게시물 삭제에 성공했습니다.',
         },
     },
+    COMMENTS: {
+        COMMON: {
+            CONTENT: {
+                REQUIRED: '내용을 입력해 주세요.',
+                MIN_LENGTH: '내용은 1자 이상 입력해 주세요.',
+            },
+            NOT_FOUND: '댓글이 존재하지 않습니다.',
+        },
+        CREATE: {
+            SUCCEED: '댓글 생성에 성공했습니다.',
+        },
+        READ_LIST: {
+            SUCCEED: '댓글 목록 조회에 성공했습니다.',
+        },
+        READ_DETAIL: {
+            SUCCEED: '댓글 상세 조회에 성공했습니다.',
+        },
+        UPDATE: {
+            SUCCEED: '댓글 수정에 성공했습니다.',
+            NO_BODY_DATA: '수정 할 정보를 입력해 주세요.',
+        },
+        DELETE: {
+            SUCCEED: '댓글 삭제에 성공했습니다.',
+        },
+    },
+
     BOOKMARK: {
         READ_COUNT: {
             SUCCEED: '북마크 개수 조회에 성공했습니다.',
